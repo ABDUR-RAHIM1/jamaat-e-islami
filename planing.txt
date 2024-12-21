@@ -1,0 +1,108 @@
+
+===================
+Databse username and Password
+username : "abdurrahim"
+pass :"w1Dxpr4pkjGKvzBZ"
+ w1Dxpr4pkjGKvzBZ
+===================
+
+
+structure : [
+===========================================================
+Categories
+  - CategoryID (PK)
+  - Name
+  - Description
+  - CreatedAt
+  - UpdatedAt
+
+Users
+  - UserID (PK)
+  - Name
+  - Email
+  - Password
+  - Role (Admin/User)
+  - CategoryID (FK, Optional)
+
+Donations
+  - DonationID (PK)
+  - Amount
+  - DonorName
+  - Date
+  - CategoryID (FK to Categories)
+  - AdminID (FK to Users)
+
+BlogPosts
+  - PostID (PK)
+  - Title
+  - Content
+  - AuthorID (FK to Users)
+  - CategoryID (FK to Categories, Optional)
+  - CreatedAt
+  - UpdatedAt
+
+Events
+  - EventID (PK)
+  - Title
+  - Description
+  - EventDate
+  - OrganizedBy (FK to Users)
+  - CategoryID (FK to Categories)
+  - CreatedAt
+
+======================================================
+]
+
+
+database diagram : [
+======================================================
+
+Users
++-------------+
+| UserID (PK) |
+| Name        |
+| Email       |
+| Password    |
+| Role        |
+| CategoryID  |
++-------------+
+       |
+       | 1
+       |
+      (FK)
+       |
+       ▼
++------------------+
+| Categories       |
++------------------+
+| CategoryID (PK)  |
+| Name             |
+| Description      |
+| CreatedBy (FK)   |
+| CreatedAt        |
+| UpdatedAt        |
++------------------+
+       |
+       | 1
+       |
+      (FK)
+       |
+       ▼
++--------------------+            +----------------+          +----------------+
+| Donations          |            | BlogPosts      |          | Events         |
++--------------------+            +----------------+          +----------------+
+| DonationID (PK)    |            | PostID (PK)    |          | EventID (PK)   |
+| Amount             |            | Title          |          | Title          |
+| DonorName          |            | Content        |          | Description    |
+| Date               |            | AuthorID (FK)  |          | EventDate      |
+| CategoryID (FK)    |            | CategoryID(FK) |          | OrganizedBy(FK)|
+| AdminID (FK)       |            | CreatedAt      |          | CategoryID (FK)|
++--------------------+            | UpdatedAt      |          | CreatedAt      |
+                                  +----------------+          +----------------+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+]
